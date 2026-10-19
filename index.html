@@ -27,137 +27,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='6' fill='%23fdfcf8' stroke='%231b1b1b' stroke-width='3'/><text x='50%' y='56%' text-anchor='middle' dominant-baseline='middle' font-family='Times,serif' font-size='30' fill='%231b1b1b'>LE</text></svg>">
 
+  <link rel="stylesheet" href="assets/base.css">
   <style>
     /* =====================================================================
        "Sidebar Preprint": the original site's sticky sidebar,
        with the main column typeset like a research paper.
        ===================================================================== */
-
-    :root {
-      --paper:    #fdfcf8;
-      --ink:      #1b1b1b;
-      --ink-2:    #2e2e2e;
-      --muted:    #4f4f4f;
-      --faint:    #6b6b6b;
-      --rule:     #d6d2c7;
-      --rule-2:   #e6e2d8;
-      --box:      #f4f2ea;
-      --box-rule: #dedad0;
-      /* hyperref "colorlinks", toned down */
-      --url:  #1f3a8a;   /* external links (urlcolor)  */
-      --ref:  #8c1c1c;   /* internal links (linkcolor) */
-      --cite: #17633a;   /* citations      (citecolor) */
-      --mark: rgba(255, 214, 102, .32);
-      --head-bg: rgba(253, 252, 248, .9);
-      /* Paper figures are white-ground images: blend the white into the page */
-      --fig-filter: none;
-      --fig-blend: multiply;
-
-      --serif: "STIX Two Text", "STIX Two", "Times New Roman", Times, serif;
-      --mono:  "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-
-      --side: 15rem;
-      --measure: 40rem;
-      color-scheme: light;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --paper:    #1a1916;
-        --ink:      #e8e3d8;
-        --ink-2:    #d6d0c3;
-        --muted:    #bdb6a8;
-        --faint:    #a29b8c;
-        --rule:     #3f3c35;
-        --rule-2:   #302e29;
-        --box:      #22211d;
-        --box-rule: #36342e;
-        --url:  #a8bcf2;
-        --ref:  #f0a8a0;
-        --cite: #92d2a7;
-        --mark: rgba(240, 196, 90, .14);
-        --head-bg: rgba(26, 25, 22, .9);
-        --fig-filter: invert(1) hue-rotate(180deg) brightness(.92);   /* dark ground, hues kept */
-      --fig-blend: screen;
-        color-scheme: dark;
-      }
-    }
-    :root[data-theme="dark"] {
-      --paper:    #1a1916;
-      --ink:      #e8e3d8;
-      --ink-2:    #d6d0c3;
-      --muted:    #bdb6a8;
-      --faint:    #a29b8c;
-      --rule:     #3f3c35;
-      --rule-2:   #302e29;
-      --box:      #22211d;
-      --box-rule: #36342e;
-      --url:  #a8bcf2;
-      --ref:  #f0a8a0;
-      --cite: #92d2a7;
-      --mark: rgba(240, 196, 90, .14);
-      --head-bg: rgba(26, 25, 22, .9);
-      --fig-filter: invert(1) hue-rotate(180deg) brightness(.92);   /* dark ground, hues kept */
-      --fig-blend: screen;
-      color-scheme: dark;
-    }
-
-    /* ---------------------------------------------------------------- base */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-    @media (prefers-reduced-motion: no-preference) {
-      html { scroll-behavior: smooth; }
-    }
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: clamp(17px, 0.95rem + 0.2vw, 18.5px);
-      line-height: 1.55;
-      font-kerning: normal;
-      font-variant-ligatures: common-ligatures;
-      font-variant-numeric: oldstyle-nums proportional-nums;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      overflow-x: hidden;
-    }
-    [id] { scroll-margin-top: 4.25rem; }
-    p { margin: 0; }
-
-    a {
-      color: var(--url);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: .16em;
-      text-decoration-color: transparent;
-      transition: text-decoration-color .18s ease, color .18s ease, background-color .18s ease, border-color .18s ease;
-    }
-    a:hover { text-decoration-color: currentColor; }
-    a[href^="#"] { color: var(--ref); }
-    a.cite { color: var(--cite); }
-
-    :focus { outline: none; }
-    :focus-visible {
-      outline: 2px solid var(--url);
-      outline-offset: 2px;
-      border-radius: 2px;
-    }
-
-    .sc  { font-variant-caps: small-caps; letter-spacing: .04em; }
-    .tt  { font-family: var(--mono); font-size: .82em; letter-spacing: 0; }
-    .nowrap { white-space: nowrap; }
-    .visually-hidden {
-      position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
-      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
-    }
-
-    .skip-link {
-      position: absolute; left: 1rem; top: -3rem; z-index: 50;
-      background: var(--paper); color: var(--ref); padding: .4rem .8rem;
-      border: 1px solid var(--rule);
-    }
-    .skip-link:focus { top: .75rem; }
 
     /* -------------------------------------------------------------- layout */
     .layout {
@@ -300,16 +175,6 @@
 
     /* theme toggle */
     .side-foot { margin-top: auto; padding-top: 1.6rem; }
-    .theme-toggle {
-      font: inherit; font-size: .88rem; color: var(--muted);
-      background: none; border: 0; padding: .3rem 0; cursor: pointer;
-      display: inline-flex; align-items: baseline; gap: .45em;
-      font-variant-caps: all-small-caps; letter-spacing: .08em;
-    }
-    .theme-toggle i { font-size: .82em; position: relative; top: .02em; }
-    .theme-toggle:hover { color: var(--ink); }
-    .theme-toggle .br { color: var(--faint); }
-    .theme-toggle:hover .lbl-t { text-decoration: underline; text-underline-offset: .16em; text-decoration-thickness: 1px; }
 
     /* ============================================================== MAIN */
     .content { min-width: 0; padding-bottom: 2rem; }
@@ -673,7 +538,7 @@
       .news li { grid-template-columns: minmax(0, 1fr); padding: .4rem 0; }
       .news time { padding: 0; font-size: .85em; }
       .link-btn { margin-left: 0; }
-      .pub { grid-template-columns: 2.1em minmax(0, 1fr); margin: 0 -.5rem .3rem; padding: .5rem .5rem .55rem; }
+      .pub { grid-template-columns: 2.4em minmax(0, 1fr); margin: 0 -.5rem .3rem; padding: .5rem .5rem .55rem; }
       .pub-label .pub-venue { display: none; }
       .pub-venue-inline { display: block !important; margin-bottom: .05rem; }
       .pub.has-fig .pub-body { grid-template-columns: minmax(0, 1fr); }
@@ -688,10 +553,6 @@
       h2.sec { font-size: 1.26em; }
     }
     .pub-venue-inline { display: none; }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition: none !important; animation: none !important; }
-    }
 
     @media print {
       .side-foot, .toc, .runhead, .pub-tools, .link-btn, .copy-bib, .skip-link { display: none !important; }
@@ -808,11 +669,12 @@
       <section id="news" data-label="2 Recent Developments" aria-labelledby="h-news">
         <h2 class="sec" id="h-news"><span class="secnum">2</span>Recent Developments</h2>
         <ul class="news">
+          <li><time datetime="2026-10">Oct 2026</time><span>Blog post: <a href="blogs/systemic_adversarial_robustness/">Bred to Break: What a 1970 Corn Blight Teaches Us About Distilled LLMs</a>.</span></li>
           <li><time datetime="2026-09">Sep 2026</time><span>“<a href="#pub-1">Certification-Enhanced Generalization Bounds</a>” was accepted at <strong>NeurIPS 2026</strong>.</span></li>
           <li><time datetime="2026-03">Mar 2026</time><span>Presented “<a href="#pub-2">Provably Safe Model Updates</a>” at <strong>SaTML 2026</strong>.</span></li>
-          <li><time datetime="2026-01">Jan 2026</time><span>“<a href="#pub-2">Provably Safe Model Updates</a>” was accepted at <strong>SaTML 2026</strong>.</span></li>
-          <li class="news-extra" id="news-older-1"><time datetime="2026-01">Jan 2026</time><span>Started my PhD at Imperial College London.</span></li>
-          <li class="news-extra" id="news-older-2"><time datetime="2025-09">Sep 2025</time><span>Finished my MSc in Computing (AI&amp;ML) at Imperial College London.</span></li>
+          <li class="news-extra" id="news-older-1"><time datetime="2026-01">Jan 2026</time><span>“<a href="#pub-2">Provably Safe Model Updates</a>” was accepted at <strong>SaTML 2026</strong>.</span></li>
+          <li class="news-extra" id="news-older-2"><time datetime="2026-01">Jan 2026</time><span>Started my PhD at Imperial College London.</span></li>
+          <li class="news-extra" id="news-older-3"><time datetime="2025-09">Sep 2025</time><span>Finished my MSc in Computing (AI&amp;ML) at Imperial College London.</span></li>
         </ul>
         <button class="link-btn news-toggle" type="button" aria-expanded="false" aria-controls="news-older-1 news-older-2"><span class="txt">Show older news</span> <span class="arr" aria-hidden="true">▾</span></button>
       </section>
@@ -831,6 +693,7 @@
           <button type="button" class="chip" data-filter="journal" aria-pressed="false">Journal</button>
           <button type="button" class="chip" data-filter="workshop" aria-pressed="false">Workshop</button>
           <button type="button" class="chip" data-filter="preprint" aria-pressed="false">Preprint</button>
+          <button type="button" class="chip" data-filter="blog" aria-pressed="false">Blog</button>
         </div>
 
         <!--
@@ -919,6 +782,9 @@
                 <span class="pub-authors"><span class="me">L. Elmecker-Plakolm</span>, L. Szpruch, J. Bose, M. Wicker.</span>
                 <span class="pub-title">Exposing Vulnerability Monoculture Through Systemic Adversarial Robustness</span>.
                 <span class="pub-meta">Under review at <em>ICLR 2027</em>.</span>
+                <div class="pub-links">
+                  <a class="bl" href="blogs/systemic_adversarial_robustness/"><span class="bt">blog post</span></a>
+                </div>
               </div>
             </li>
           </ol>
@@ -934,6 +800,36 @@
                 <span class="pub-authors">P. Fasterling*, <span class="me">L. Elmecker-Plakolm</span>*, P. Sosnin*, C. Tsay, M. Wicker.</span>
                 <span class="pub-title">Certifiably Safe Post-Training</span>.
                 <span class="pub-meta"><em>FoPT Workshop at COLT 2025</em>.</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!--
+          Blog posts live in blogs/<slug>/ (see README). Number them [B1], [B2], …
+          newest first, and keep data-type="blog" so the Blog filter finds them.
+        -->
+        <div class="pub-year" data-year="blog">
+          <h3 class="subsec"><span class="secnum">3.3</span>Blog Posts</h3>
+          <ol class="bib">
+            <li class="pub has-fig" id="blog-1" data-type="blog">
+              <div class="pub-label"><span class="pub-num">[B1]</span><span class="pub-venue">Oct '26</span></div>
+              <div class="pub-body">
+                <div class="pub-text">
+                  <span class="pub-venue pub-venue-inline">Blog · Oct '26</span>
+                  <a class="pub-title" href="blogs/systemic_adversarial_robustness/">Bred to Break: What a 1970 Corn Blight Teaches Us About Distilled LLMs</a>.
+                  <span class="pub-meta">Why pools of distilled models are easier to break together than one at a time. Accompanies <a class="cite" href="#pub-3">[3]</a>.</span>
+                  <div class="pub-links">
+                    <a class="bl" href="blogs/systemic_adversarial_robustness/"><span class="bt">read</span></a>
+                  </div>
+                </div>
+                <figure class="pub-fig">
+                  <button type="button" class="fig-btn" aria-expanded="false" aria-controls="figcap-b1" aria-label="Enlarge the lead figure of blog post B1">
+                    <img src="blogs/systemic_adversarial_robustness/figures/lead_figure.png" width="2400" height="909" loading="lazy"
+                         alt="Diagram of four models distilled from DeepSeek: as distillation steps increase, their vulnerable regions merge until a single attack breaks all of them.">
+                  </button>
+                  <figcaption id="figcap-b1" hidden><span class="lbl">Lead figure of [B1]:</span> The more the models are distilled from one teacher, the fewer distinct attacks it takes to break them all.</figcaption>
+                </figure>
               </div>
             </li>
           </ol>
@@ -1023,38 +919,11 @@
 
   <div class="visually-hidden" aria-live="polite" id="sr-status"></div>
 
+  <script src="assets/theme.js"></script>
   <script>
   (function () {
-    var root = document.documentElement;
     var status = document.getElementById('sr-status');
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    /* ---------------------------------------------------------- theme */
-    var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-    var toggle = document.querySelector('.theme-toggle');
-    var label = toggle.querySelector('.theme-label');
-    var icon = toggle.querySelector('.icon');
-
-    function current() {
-      return root.dataset.theme || (mq && mq.matches ? 'dark' : 'light');
-    }
-    function syncToggle() {
-      var next = current() === 'dark' ? 'light' : 'dark';
-      label.textContent = next;
-      icon.className = 'fa-solid icon ' + (next === 'dark' ? 'fa-moon' : 'fa-sun');
-      toggle.setAttribute('aria-label', 'Switch to ' + next + ' theme');
-    }
-    toggle.addEventListener('click', function () {
-      var next = current() === 'dark' ? 'light' : 'dark';
-      root.dataset.theme = next;
-      try { localStorage.setItem('theme', next); } catch (e) {}
-      syncToggle();
-    });
-    if (mq) {
-      if (mq.addEventListener) mq.addEventListener('change', syncToggle);
-      else if (mq.addListener) mq.addListener(syncToggle);
-    }
-    syncToggle();
 
     /* ------------------------------------------------------ older news */
     var extras = document.querySelectorAll('.news-extra');
@@ -1151,12 +1020,11 @@
     document.querySelectorAll('.fig-btn').forEach(function (btn) {
       var pub = btn.closest('.pub');
       var cap = document.getElementById(btn.getAttribute('aria-controls'));
-      var num = pub.querySelector('.pub-num').textContent.replace(/\D/g, '');
       btn.addEventListener('click', function () {
         var open = pub.classList.toggle('fig-open');
         cap.hidden = !open;
         btn.setAttribute('aria-expanded', String(open));
-        btn.setAttribute('aria-label', (open ? 'Shrink' : 'Enlarge') + ' Figure 1 of reference ' + num);
+        btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace(/^\w+/, open ? 'Shrink' : 'Enlarge'));
       });
     });
 
