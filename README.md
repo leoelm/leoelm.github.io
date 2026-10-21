@@ -28,6 +28,8 @@ blogs/<slug>/  one folder per blog post: index.html, text.md, figures/
 
 In `text.md`:
 - An image on its own line becomes a figure. Add a caption with the Markdown title syntax, `![alt text](figures/x.png "Caption.")`. Captioned figures are numbered Figure 1, 2, … in order.
+- Math is LaTeX, typeset with KaTeX: `$…$` inline, and `$$…$$` on lines of its own for a displayed equation. Write `\$` for a literal dollar sign.
+  A post with math needs the KaTeX stylesheet and script in its `index.html` (copy the two `KaTeX` lines from an existing post).
 - An `.mp4` or `.webm` referenced like an image plays as a silent looping video, like a GIF but much smaller. Export it as H.264 MP4 so every browser can play it.
 - White-background figures are inverted for dark mode. To use your own light and dark versions instead, save both as `name_light.ext` and `name_dark.ext` and reference either one; the page shows the one matching the theme and switches when the theme changes.
 

@@ -81,13 +81,15 @@
   font-size: .9rem; line-height: 1.55; overflow-x: auto;
 }
 .post-body pre code { font-size: .8rem; }
+.post-body .katex { font-size: 1.08em; }
+.post-body .katex-display {
+  margin: 0; padding: .3rem 0;
+  overflow-x: auto; overflow-y: hidden;   /* long equations scroll on phones */
+}
 .post-body hr { border: 0; border-top: .5px solid var(--rule); margin: 2rem 0; }
 
-/* figures: wider than the text where the screen allows */
-.post-body figure {
-  --bleed: max(0px, min(7rem, (100vw - var(--measure)) / 2 - 3rem));
-  margin: 2rem calc(-1 * var(--bleed));
-}
+/* figures: the same width as the text */
+.post-body figure { margin: 2rem 0; }
 .post-body figure img, .post-body figure video {
   display: block; width: 100%; height: auto;
   border-radius: 2px;
@@ -99,8 +101,7 @@
   mix-blend-mode: var(--fig-blend);
 }
 .post-body figcaption {
-  max-width: var(--measure); margin: .7rem auto 0; padding: 0 var(--bleed);
-  box-sizing: content-box;
+  margin-top: .7rem;
   font-size: .84rem; line-height: 1.45; color: var(--muted);
   text-align: justify; hyphens: auto; -webkit-hyphens: auto;
 }
@@ -108,11 +109,18 @@
 
 .post-error { font-style: italic; color: var(--muted); }
 
+/* text set in the page colour, so it blends into the background */
+.post-body .paper-ink { color: var(--paper); }
+
 .colophon {
   margin: 4.5rem 0 0; padding: .6rem 0 1.5rem;
   border-top: .5px solid var(--ink);
   font-size: .8rem; color: var(--muted);
   display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+}
+
+@media (max-width: 560px) {
+  .post-body .katex-display { font-size: .86em; }
 }
 
 @media (max-width: 899.98px) {

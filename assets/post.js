@@ -21,11 +21,27 @@
   }
   document.addEventListener('themechange', function () { syncThemedImages(body); });
 
+  // Math: $…$ inline and $$…$$ on its own lines, typeset with KaTeX. It is lifted
+  // out before Markdown runs, so underscores and backslashes in TeX survive.
+  // Write \$ for a literal dollar sign.
+  function typesetMath(md, parse) {
+    var math = [];
+    md = md.replace(/\$\$([\s\S]+?)\$\$|(?<!\\)\$([^\s$](?:[^$\n]*?[^\s$\\])?)\$/g, function (m, display, inline) {
+      math.push({ tex: display || inline, display: !!display });
+      return '§§' + (math.length - 1) + '§§';
+    });
+    return parse(md).replace(/§§(\d+)§§/g, function (m, i) {
+      var item = math[i];
+      if (!window.katex) return item.display ? '$$' + item.tex + '$$' : '$' + item.tex + '$';
+      return katex.renderToString(item.tex, { displayMode: item.display, throwOnError: false });
+    });
+  }
+
   function render(md) {
     // Build the post in a template first: images there don't load until they
     // are in the page, so only the right themed version is ever fetched.
     var tpl = document.createElement('template');
-    tpl.innerHTML = marked.parse(md);
+    tpl.innerHTML = typesetMath(md, marked.parse);
     var doc = tpl.content;
 
     doc.querySelectorAll('img').forEach(function (img) {
@@ -73,7 +89,7 @@
     body.replaceChildren(doc);
   }
 
-  fetch(body.dataset.src)
+  fetch(body.dataset.src, { cache: 'no-cache' })
     .then(function (r) {
       if (!r.ok) throw new Error(r.status);
       return r.text();
